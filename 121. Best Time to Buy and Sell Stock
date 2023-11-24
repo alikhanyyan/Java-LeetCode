@@ -12,6 +12,7 @@ class Solution {
                 sum = prices[i] - min;
             }
         }
+
         return sum;
     }
 }
