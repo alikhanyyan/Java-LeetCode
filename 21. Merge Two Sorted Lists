@@ -52,7 +52,6 @@ class Solution {
                 list2 = list2.next;
                 newCurrent = newCurrent.next;
         }
-
         return newList;
     }
 }
