@@ -15,6 +15,7 @@ class Solution {
             }
             result.get(i).add(1);
         }
+
         return result;
     }
 }
