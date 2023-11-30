@@ -1,0 +1,108 @@
+class MyLinkedList {
+
+    Node head = null;
+    
+    public MyLinkedList() {
+    }
+    
+    public int get(int index) {
+        if (head == null) {
+            return -1;
+        }
+
+        var current = head;
+        while (index > 0 && current.next != null) {
+            --index;
+            current = current.next;
+        }
+        if (index == 0) {
+            return current.val;
+        }
+
+        return -1;
+    }
+    
+    public void addAtHead(int val) {
+        var node = new Node(val);
+        node.next = head;
+        head = node;
+    }
+    
+    public void addAtTail(int val) {
+        if (head == null) {
+            head = new Node(val);
+            return;
+        }
+
+        var current = head;
+        while (current.next != null) {
+            current = current.next;
+        }
+        current.next = new Node(val);
+    }
+    
+    public void addAtIndex(int index, int val) {
+       if (head == null) {
+            if (index == 0) {
+                addAtHead(val);
+            }
+            return;
+        }
+        if (index == 0) {
+            addAtHead(val);
+        }
+
+        var current = head;
+        while (index > 1 && current.next != null) {
+            --index;
+            current = current.next;
+        }
+        if (index == 1) {
+            var node = new Node(val);
+            node.next = current.next;
+            current.next = node;
+        }
+    }
+    
+    public void deleteAtIndex(int index) {
+        if (head == null) {
+            return;
+        }
+        if (index == 0) {
+            if (head == null) {
+                return;
+            }
+
+            head = head.next;
+            return;
+        }
+
+        var current = head;
+        while (index > 1 && current.next != null) {
+            --index;
+            current = current.next;
+        }
+        if (index == 1 && current.next != null) {
+            current.next = current.next.next;
+        }
+    }
+
+    public class Node {
+        int val;
+        Node next = null;
+
+        public Node(int val) {
+            this.val = val;
+        }
+    }
+}
+
+/**
+ * Your MyLinkedList object will be instantiated and called as such:
+ * MyLinkedList obj = new MyLinkedList();
+ * int param_1 = obj.get(index);
+ * obj.addAtHead(val);
+ * obj.addAtTail(val);
+ * obj.addAtIndex(index,val);
+ * obj.deleteAtIndex(index);
+ */
