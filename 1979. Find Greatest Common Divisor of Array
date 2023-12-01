@@ -11,14 +11,13 @@ class Solution {
             }
         }
 
-        return findGCD(max, min);
-    }
-
-    private int findGCD(int max, int min) {
-        if (max == 0) {
-            return min;
+        int divisor = min;
+        while (max % min != 0) {
+            divisor = max % min;
+            max = min;
+            min = divisor;
         }
-
-        return findGCD(min % max, max);
+        
+        return divisor;
     }
 }
