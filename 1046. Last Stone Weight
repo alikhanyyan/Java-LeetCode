@@ -1,0 +1,20 @@
+class Solution {
+    public int lastStoneWeight(int[] stones) {
+        int n = stones.length;
+        PriorityQueue<Integer> sortedStones = new PriorityQueue<>(n, (num1, num2) -> num2 - num1);
+
+        for (int stone : stones) {
+            sortedStones.add(stone);
+        }
+
+        while (sortedStones.size() > 1) {
+            int current = sortedStones.poll() - sortedStones.poll();
+
+            if (current > 0) {
+                sortedStones.add(current);
+            }
+        }
+
+        return sortedStones.isEmpty() ? 0 : sortedStones.peek();
+    }
+}
